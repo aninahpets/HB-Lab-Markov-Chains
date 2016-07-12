@@ -24,11 +24,36 @@ def make_chains(text_string):
         >>> make_chains("hi there mary hi there juanita")
         {('hi', 'there'): ['mary', 'juanita'], ('there', 'mary'): ['hi'], ('mary', 'hi': ['there']}
     """
-
+    #Creates empty dictionary
     chains = {}
 
-    # your code goes here
+    #Splits the string by empty spaces
+    words = text_string.split()
 
+    i = 0
+    for word in words:
+        try: 
+            #Creates bigram
+            bigram = (words[i],words[i+1])
+
+            #Creates next_word value
+            next_word = words[i + 2]
+            i += 1
+
+            #If bigram exists as a key in the dictionary, appends next_word to value list
+            if bigram in chains:
+                chains[bigram].append(next_word)
+            #If bigram is not a key in the dictionary, adds bigram as key and next_word as value
+            #And makes the value a list
+            else:
+                chains[bigram] = []
+                chains[bigram].append(next_word)
+
+
+        except IndexError:
+            break
+
+    print chains
     return chains
 
 
