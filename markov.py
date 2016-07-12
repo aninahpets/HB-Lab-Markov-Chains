@@ -1,3 +1,4 @@
+import random
 from random import choice
 
 
@@ -58,10 +59,16 @@ def make_text(chains):
 
     # We select a starter key aka tuple-bigram
     # Use .choice to randomly select an associate value from the list of next_word(s)
-    # Print the key/tupe/bigram with the next word
-    # Repeat process until 
-
-    return text
+    # Add the key/tupe/bigram with the next word to text
+    # Add new_key with second index of current_key and chosen_word
+    # Repeat process until new key is not found in dict
+    for  
+        current_key = random.choice(chains.keys())
+        chosen_word = random.choice(chains[current_key])
+        text += current_key[0] + " " + current_key[1] + " " + chosen_word
+        new_key = (current_key[1], chosen_word)
+    print text
+#    return text
 
 
 input_path = "green-eggs.txt"
