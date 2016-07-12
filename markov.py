@@ -57,17 +57,26 @@ def make_text(chains):
 
     text = ""
 
-    # We select a starter key aka tuple-bigram
-    # Use .choice to randomly select an associate value from the list of next_word(s)
+
+
     # Add the key/tupe/bigram with the next word to text
     # Add new_key with second index of current_key and chosen_word
     # Repeat process until new key is not found in dict
-    for  
-        current_key = random.choice(chains.keys())
+
+    # Use .choice to randomly select a starter key aka tuple-bigram
+    current_key = random.choice(chains.keys())
+    # Use .choice to randomly select an associated value from the list of next_word(s)
+    chosen_word = random.choice(chains[current_key])
+    text += current_key[0] + " " + current_key[1] + " " + chosen_word + " "
+    while True:
         chosen_word = random.choice(chains[current_key])
-        text += current_key[0] + " " + current_key[1] + " " + chosen_word
+        text += chosen_word + " "
         new_key = (current_key[1], chosen_word)
-    print text
+        current_key = new_key
+        if new_key not in chains:
+            break
+
+    return text
 #    return text
 
 
