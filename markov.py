@@ -34,29 +34,39 @@ def make_chains(text_string, n):
     words = text_string.split()
 
     i = 0
-    
-    for word in words[:-n]:
-        ngram = []
+
+    #While the index i is less than the -nth (aka last tuple possible)
+    #Loop over the list words and create tuples
+
+    while i < (len(words) - n):
         #Creates ngram
-        #ngram = (words[i],words[i+1])
-        for i in range(0,n):
-            ngram.append(word)
+        ngram = []
+
+        # loops n number of times to create tuples and next_word list
+        for j in range(i, i + n):
+            ngram.append(words[j])
+            # sets next_word equal to the next word after the new ngram tuple
+            next_word = words[words.index(ngram[-1]) + 1]
+            i += 1
 
         ngram = tuple(ngram)
+            
+            # #If ngram exists as a key in the dictionary, appends next_word to value list
+            # #Creates next_word value
+            # if ngram in chains:
+            #     chains[ngram].append(next_word)
+            # #If ngram is not a key in the dictionary, adds ngram as key and next_word as value
+            # #And makes the value a list
+            # else:
+            #     chains[ngram] = []
+            #     chains[ngram].append(next_word)
         print ngram
+        print next_word
 
-        #Creates next_word value
-        next_word = words[i + n]
-        i += 1
 
-        #If ngram exists as a key in the dictionary, appends next_word to value list
-        if ngram in chains:
-            chains[ngram].append(next_word)
-        #If ngram is not a key in the dictionary, adds ngram as key and next_word as value
-        #And makes the value a list
-        else:
-            chains[ngram] = []
-            chains[ngram].append(next_word)
+
+
+
 
     return chains
 
