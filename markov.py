@@ -51,22 +51,15 @@ def make_chains(text_string, n):
 
         ngram = tuple(ngram)
             
-            # #If ngram exists as a key in the dictionary, appends next_word to value list
-            # #Creates next_word value
-            # if ngram in chains:
-            #     chains[ngram].append(next_word)
-            # #If ngram is not a key in the dictionary, adds ngram as key and next_word as value
-            # #And makes the value a list
-            # else:
-            #     chains[ngram] = []
-            #     chains[ngram].append(next_word)
-        print ngram
-        print next_word
-
-
-
-
-
+        #If ngram exists as a key in the dictionary, appends next_word to value list
+        #Creates next_word value
+        if ngram in chains:
+            chains[ngram].append(next_word)
+        #If ngram is not a key in the dictionary, adds ngram as key and next_word as value
+        #And makes the value a list
+        else:
+            chains[ngram] = []
+            chains[ngram].append(next_word)
 
     return chains
 
